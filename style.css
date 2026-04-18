@@ -278,46 +278,47 @@ img {
     display: block;  /* Prevents browser-added space at the bottom */
 }
 @media (max-width: 768px) {
-  .header {
-    padding: 15px 10px;
+  /* 1. Prevent the container itself from being wider than the phone */
+  .header, .title-row, .nav {
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden; /* Safety net */
   }
 
-  /* Stack the wings and icons vertically or hide wings to save space */
-  .wing {
-    display: none; /* Wings usually take too much horizontal space on mobile */
-  }
-
-  .title-row {
-    flex-direction: row;
-    gap: 10px;
-    width: 100%;
-    justify-content: center;
-  }
-
+  /* 2. Fix the Title (The most likely culprit) */
   .main-title {
-    font-size: 22px; /* Shrink title so it doesn't wrap awkwardly */
-    letter-spacing: 2px;
-    white-space: normal; /* Allow it to wrap if the name is very long */
+    font-size: 1.5rem !important; /* Scale down the text */
+    white-space: normal !important; /* ALLOW text to wrap to a second line */
+    word-wrap: break-word;
     text-align: center;
+    padding: 0 10px;
+    flex: 1; /* Allow it to take up only available space */
   }
 
+  /* 3. Disable the Wings (They take up invisible horizontal pixels) */
+  .wing {
+    display: none !important;
+  }
+
+  /* 4. Force the Icons to stay small */
   .rpg-icon img {
-    width: 30px; /* Smaller icons for smaller screens */
+    width: 25px !important;
+    height: auto;
   }
 
-  /* Make the navigation menu wrap to multiple lines so buttons don't fall off-screen */
+  /* 5. The Navigation Stack */
   .nav {
-    flex-wrap: wrap; 
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
+    display: flex !important;
+    flex-wrap: wrap !important; /* IMPORTANT: Let buttons drop to next line */
+    justify-content: center !important;
+    gap: 5px !important;
+    margin-top: 15px;
   }
 
   .nav button {
-    padding: 8px 12px;
-    font-size: 12px;
-    flex: 1 1 auto; /* Allows buttons to grow and fill rows evenly */
-    min-width: 80px;
+    font-size: 11px !important;
+    padding: 6px 10px !important;
+    min-width: 70px; /* Ensures they stay clickable but small */
   }
 }
-
