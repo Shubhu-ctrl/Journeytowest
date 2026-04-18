@@ -277,5 +277,47 @@ img {
     height: auto;     /* Maintain the correct aspect ratio without distortion */
     display: block;  /* Prevents browser-added space at the bottom */
 }
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 10px;
+  }
 
+  /* Stack the wings and icons vertically or hide wings to save space */
+  .wing {
+    display: none; /* Wings usually take too much horizontal space on mobile */
+  }
+
+  .title-row {
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .main-title {
+    font-size: 22px; /* Shrink title so it doesn't wrap awkwardly */
+    letter-spacing: 2px;
+    white-space: normal; /* Allow it to wrap if the name is very long */
+    text-align: center;
+  }
+
+  .rpg-icon img {
+    width: 30px; /* Smaller icons for smaller screens */
+  }
+
+  /* Make the navigation menu wrap to multiple lines so buttons don't fall off-screen */
+  .nav {
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .nav button {
+    padding: 8px 12px;
+    font-size: 12px;
+    flex: 1 1 auto; /* Allows buttons to grow and fill rows evenly */
+    min-width: 80px;
+  }
+}
 
